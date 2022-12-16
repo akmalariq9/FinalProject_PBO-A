@@ -67,4 +67,20 @@ public class Controller implements Initializable {
             checkCollisionBottomZone();
         }
     }));
+    
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        timeline.setCycleCount(Animation.INDEFINITE);
+    }
+
+    @FXML
+    void startGameButtonAction(ActionEvent event) {
+        startButton.setVisible(false);
+        startGame();
+    }
+
+    public void startGame(){
+        createBricks();
+        timeline.play();
+    }
 }
