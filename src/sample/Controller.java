@@ -139,5 +139,58 @@ public class Controller implements Initializable {
             }
         }
     }
+    
+    public void movePaddle(){
+        Bounds bounds = scene.localToScreen(scene.getBoundsInLocal());
+        double sceneXPos = bounds.getMinX();
 
+        double xPos = robot.getMouseX();
+        double paddleWidth = paddle.getWidth();
+
+        if(xPos >= sceneXPos + (paddleWidth/2) && xPos <= (sceneXPos + scene.getWidth()) - (paddleWidth/2)){
+            paddle.setLayoutX(xPos - sceneXPos - (paddleWidth/2));
+        } else if (xPos < sceneXPos + (paddleWidth/2)){
+            paddle.setLayoutX(0);
+        } else if (xPos > (sceneXPos + scene.getWidth()) - (paddleWidth/2)){
+            paddle.setLayoutX(scene.getWidth() - paddleWidth);
+        }
+    }
+
+    public void checkCollisionPaddle(Rectangle paddle){
+
+        if(circle.getBoundsInParent().intersects(paddle.getBoundsInParent())){
+
+            boolean rightBorder = circle.getLayoutX() >= ((paddle.getLayoutX() + paddle.getWidth()) - circle.getRadius());
+            boolean leftBorder = circle.getLayoutX() <= (paddle.getLayoutX() + circle.getRadius());
+            boolean bottomBorder = circle.getLayoutY() >= ((paddle.getLayoutY() + paddle.getHeight()) - circle.getRadius());
+            boolean topBorder = circle.getLayoutY() <= (paddle.getLayoutY() + circle.getRadius());
+
+            if (rightBorder || leftBorder) {
+                deltaX *= -1;
+            }
+            if (bottomBorder || topBorder) {
+                deltaY *= -1;
+            }
+        }
+    }
+
+    public void checkCollisionBottomZone(){
+        if(circle.getBoundsInParent().intersects(bottomZone.getBoundsInParent())){
+            timeline.stop();
+            bricks.forEach(brick -> scene.getChildren().remove(brick));
+            bricks.clear();
+            startButton.setVisible(true);
+            scoreCounter = 0;
+            score.setText(String.valueOf(scoreCounter));
+
+            deltaX = -1;
+            deltaY = -3;
+
+            circle.setLayoutX(300);
+            circle.setLayoutY(300);
+
+            System.out.println("Game over!");
+        }
+    }
+}
 }
