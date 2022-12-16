@@ -47,3 +47,24 @@ public class Controller implements Initializable {
 
     double deltaX = -1;
     double deltaY = -3;
+
+//1 Frame evey 10 millis, which means 100 FPS
+    Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent actionEvent) {
+            movePaddle();
+
+            checkCollisionPaddle(paddle);
+            circle.setLayoutX(circle.getLayoutX() + deltaX);
+            circle.setLayoutY(circle.getLayoutY() + deltaY);
+
+            if(!bricks.isEmpty()){
+                bricks.removeIf(brick -> checkCollisionBrick(brick));
+            } else {
+                createBricks();
+            }
+            checkCollisionScene(scene);
+            checkCollisionBottomZone();
+        }
+    }));
+}
