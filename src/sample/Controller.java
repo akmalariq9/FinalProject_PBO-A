@@ -83,4 +83,61 @@ public class Controller implements Initializable {
         createBricks();
         timeline.play();
     }
+    
+    public void checkCollisionScene(Node node){
+        Bounds bounds = node.getBoundsInLocal();
+        boolean rightBorder = circle.getLayoutX() >= (bounds.getMaxX() - circle.getRadius());
+        boolean leftBorder = circle.getLayoutX() <= (bounds.getMinX() + circle.getRadius());
+        boolean bottomBorder = circle.getLayoutY() >= (bounds.getMaxY() - circle.getRadius());
+        boolean topBorder = circle.getLayoutY() <= (bounds.getMinY() + circle.getRadius());
+
+        if (rightBorder || leftBorder) {
+            deltaX *= -1;
+        }
+        if (bottomBorder || topBorder) {
+            deltaY *= -1;
+        }
+    }
+
+    public boolean checkCollisionBrick(Rectangle brick){
+        if(circle.getBoundsInParent().intersects(brick.getBoundsInParent())){
+            boolean rightBorder = circle.getLayoutX() >= ((brick.getX() + brick.getWidth()) - circle.getRadius());
+            boolean leftBorder = circle.getLayoutX() <= (brick.getX() + circle.getRadius());
+            boolean bottomBorder = circle.getLayoutY() >= ((brick.getY() + brick.getHeight()) - circle.getRadius());
+            boolean topBorder = circle.getLayoutY() <= (brick.getY() + circle.getRadius());
+
+            if (rightBorder || leftBorder) {
+                deltaX *= -1;
+            }
+            if (bottomBorder || topBorder) {
+                deltaY *= -1;
+            }
+            scene.getChildren().remove(brick);
+            scoreCounter++;
+            //score.setText(String.valueOf(scoreCounter));
+            return true;
+        }
+        return false;
+    }
+
+
+    public void createBricks(){
+        double width = 560;
+        double height = 200;
+
+        int spaceCheck = 1;
+
+        for (double i = height; i > 0 ; i = i - 50) {
+            for (double j = width; j > 0 ; j = j - 25) {
+                if(spaceCheck % 2 == 0){
+                    Rectangle rectangle = new Rectangle(j,i,30,25);
+                    rectangle.setFill(Color.BLUEVIOLET);
+                    scene.getChildren().add(rectangle);
+                    bricks.add(rectangle);
+                }
+                spaceCheck++;
+            }
+        }
+    }
+
 }
