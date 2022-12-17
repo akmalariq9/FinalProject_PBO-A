@@ -20,11 +20,21 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.scene.text.Text;
 
-public class Controller implements Initializable {
+public class PlayGameController implements Initializable {
 
     @FXML
-    private Label congrats;
+    private Label AfterPlayText;
+
+    @FXML
+    private Text AreYouReady;
+
+    @FXML
+    private Button StartButton2;
+
+    @FXML
+    private Label SumScore;
 
     @FXML
     private Label ScoreText;
@@ -68,7 +78,7 @@ public class Controller implements Initializable {
     //1 Frame evey 10 millis, which means 100 FPS
     Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), new EventHandler<ActionEvent>() {
         @Override
-        public void handle(ActionEvent actionEvent) {
+        public void handle(ActionEvent actionEvent){
             movePaddle();
             checkCollisionPaddle(paddle);
             circle.setLayoutX(circle.getLayoutX() + deltaX);
@@ -77,7 +87,7 @@ public class Controller implements Initializable {
             if(!bricks.isEmpty()){
                 bricks.removeIf(brick -> checkCollisionBrick(brick));
             } else {
-                congrats.setText("Congratulations!");
+                AfterPlayText.setText("Congratulations!");
                 timeline.stop();
                 startButton.setVisible(true);
             }
@@ -105,7 +115,8 @@ public class Controller implements Initializable {
     @FXML
     void startGameButtonAction(ActionEvent event) {
         startButton.setVisible(false);
-        congrats.setText("");
+        StartButton2.setVisible(false);
+        AreYouReady.setVisible(false);
         startGame();
         initscore = 0;
         initlifes = 3;
@@ -147,8 +158,9 @@ public class Controller implements Initializable {
                 deltaY *= -1;
             }
             scene.getChildren().remove(brick);
-            initscore += 1;
+            initscore += 50;
             ScoreText.setText(String.format("%d", initscore));
+            Lifes.setText(String.format("%d", initlifes));
             return true;
         }
         return false;
@@ -210,9 +222,12 @@ public class Controller implements Initializable {
     public void checkCollisionBottomZone(){
         if(circle.getBoundsInParent().intersects(bottomZone.getBoundsInParent())){
             timeline.stop();
+            AfterPlayText.setText("Game Over :(");
+            SumScore.setText(String.format("Your Score : %d", initscore));
             bricks.forEach(brick -> scene.getChildren().remove(brick));
             bricks.clear();
-            startButton.setVisible(true);
+            StartButton2.setVisible(true);
+
             initscore = 0;
             ScoreText.setText("");
             Lifes.setText("");
@@ -222,5 +237,14 @@ public class Controller implements Initializable {
             circle.setLayoutY(300);
             // System.out.println("Game over!");
         }
+    }
+    
+    @FXML
+    void StartButton2Action(ActionEvent event) {
+        initlifes = 3;
+        startGame();
+        StartButton2.setVisible(false);
+        AfterPlayText.setText("");
+        SumScore.setText("");
     }
 }
