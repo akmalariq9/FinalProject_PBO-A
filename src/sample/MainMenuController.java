@@ -29,8 +29,12 @@ public class MainMenuController {
     }
 
     @FXML
-    void CreditButtonAction(ActionEvent event) {
-
+    void CreditButtonAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Credit.fxml"));
+        Stage window = (Stage)(((Node) event.getSource()).getScene().getWindow());
+        window.setTitle("Final Project_Brick Breaker!");
+        window.setScene(new Scene(root, 900, 600));
+        window.show();
     }
 
     @FXML
