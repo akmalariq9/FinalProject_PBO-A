@@ -21,17 +21,10 @@
             <Font size="44.0" />
          </font>
       </Button>
-
         <Circle fx:id="circle" fill="DODGERBLUE" layoutX="300.0" layoutY="27.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
       <Rectangle fx:id="paddle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="10.0" layoutX="256.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" width="88.0" />
       <Rectangle fx:id="bottomZone" arcHeight="2.0" arcWidth="5.0" fill="TRANSPARENT" height="10.0" layoutY="395.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
       <Label fx:id="ScoreText" layoutX="14.0" layoutY="14.0" prefHeight="41.0" prefWidth="148.0" textAlignment="RIGHT" textFill="#fefefe">
-
-        <Circle fx:id="circle" fill="DODGERBLUE" layoutX="154.0" layoutY="181.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Rectangle fx:id="paddle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="10.0" layoutX="256.0" layoutY="358.0" stroke="BLACK" strokeType="INSIDE" width="88.0" />
-      <Rectangle fx:id="bottomZone" arcHeight="2.0" arcWidth="5.0" fill="TRANSPARENT" height="10.0" layoutY="395.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
-      <Label fx:id="ScoreText" layoutX="14.0" layoutY="14.0" prefHeight="41.0" prefWidth="148.0" textAlignment="RIGHT">
-
          <font>
             <Font size="56.0" />
          </font>
@@ -44,10 +37,6 @@
       <Label fx:id="Lifes" layoutX="27.0" layoutY="291.0" prefHeight="41.0" prefWidth="148.0" textAlignment="RIGHT" textFill="#fefefe">
          <font>
             <Font size="56.0" />
-
-      <Label fx:id="congrats" layoutX="93.0" layoutY="70.0" prefHeight="66.0" prefWidth="461.0" textAlignment="CENTER">
-         <font>
-            <Font size="45.0" />
          </font>
       </Label>
     </children>

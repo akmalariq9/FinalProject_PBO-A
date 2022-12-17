@@ -14,12 +14,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.robot.Robot;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-//import javafx.scene.text.Text;
-
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -28,7 +26,7 @@ public class Controller implements Initializable {
 
     @FXML
     private Label congrats;
-
+    
     @FXML
     private Label ScoreText;
 
@@ -36,10 +34,22 @@ public class Controller implements Initializable {
     private AnchorPane scene;
 
     @FXML
-    private Circle circle;
+    private Label ScoreText;
+
+    @FXML
+    private Label Lifes;
 
     @FXML
     private Rectangle paddle;
+
+    @FXML
+    private AnchorPane scene;
+
+    @FXML
+    private Circle circle;
+
+    //@FXML
+    //private Rectangle paddle;
 
     @FXML
     private Rectangle bottomZone;
@@ -60,14 +70,13 @@ public class Controller implements Initializable {
     double deltaX = -1;
     double deltaY = -3;
     int initscore = 0;
-
+    int initlifes = 3;
 
     //1 Frame evey 10 millis, which means 100 FPS
     Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent actionEvent) {
             movePaddle();
-
             checkCollisionPaddle(paddle);
             circle.setLayoutX(circle.getLayoutX() + deltaX);
             circle.setLayoutY(circle.getLayoutY() + deltaY);
@@ -80,10 +89,20 @@ public class Controller implements Initializable {
                 startButton.setVisible(true);
             }
             checkCollisionScene(scene);
-            checkCollisionBottomZone();
+            if(circle.getBoundsInParent().intersects(bottomZone.getBoundsInParent()))
+            {
+                if(initlifes == 0){
+                    checkCollisionBottomZone();
+                }
+                else{
+                    initlifes -= 1;
+                    Lifes.setText(String.format("%d", initlifes));
+                    circle.setLayoutX(300);
+                    circle.setLayoutY(27);
+                }
+            }
         }
     }));
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -96,7 +115,10 @@ public class Controller implements Initializable {
         congrats.setText("");
         startGame();
         initscore = 0;
+
+        initlifes = 3;
         ScoreText.setText(String.format("%d", initscore));
+        Lifes.setText(String.format("%d", initlifes));
     }
 
     public void startGame(){
@@ -146,11 +168,12 @@ public class Controller implements Initializable {
 
         int spaceCheck = 1;
 
-        for (double i = height; i > 0 ; i = i - 200) {
-            for (double j = width; j > 0 ; j = j - 500) {
+
+        for (double i = height; i > 0 ; i = i - 500) {
+            for (double j = width; j > 0 ; j = j - 150) {
                 if(spaceCheck % 2 == 0){
-                    Rectangle rectangle = new Rectangle(j,i,30,25);
-                    rectangle.setFill(Color.BLUEVIOLET);
+                    Rectangle rectangle = new Rectangle(j,i,30,30);
+                    rectangle.setFill(Color.ORANGE);
                     scene.getChildren().add(rectangle);
                     bricks.add(rectangle);
                 }
@@ -175,14 +198,14 @@ public class Controller implements Initializable {
         }
     }
 
-    public void checkCollisionPaddle(Rectangle paddle){
+    public void checkCollisionPaddle(Rectangle paddle2){
 
-        if(circle.getBoundsInParent().intersects(paddle.getBoundsInParent())){
+        if(circle.getBoundsInParent().intersects(paddle2.getBoundsInParent())){
 
-            boolean rightBorder = circle.getLayoutX() >= ((paddle.getLayoutX() + paddle.getWidth()) - circle.getRadius());
-            boolean leftBorder = circle.getLayoutX() <= (paddle.getLayoutX() + circle.getRadius());
-            boolean bottomBorder = circle.getLayoutY() >= ((paddle.getLayoutY() + paddle.getHeight()) - circle.getRadius());
-            boolean topBorder = circle.getLayoutY() <= (paddle.getLayoutY() + circle.getRadius());
+            boolean rightBorder = circle.getLayoutX() >= ((paddle2.getLayoutX() + paddle.getWidth()) - circle.getRadius());
+            boolean leftBorder = circle.getLayoutX() <= (paddle2.getLayoutX() + circle.getRadius());
+            boolean bottomBorder = circle.getLayoutY() >= ((paddle2.getLayoutY() + paddle.getHeight()) - circle.getRadius());
+            boolean topBorder = circle.getLayoutY() <= (paddle2.getLayoutY() + circle.getRadius());
 
             if (rightBorder || leftBorder) {
                 deltaX *= -1;
@@ -201,10 +224,10 @@ public class Controller implements Initializable {
             startButton.setVisible(true);
             initscore = 0;
             ScoreText.setText("");
+            Lifes.setText("");
 
             deltaX = -1;
             deltaY = -3;
-
             circle.setLayoutX(300);
             circle.setLayoutY(300);
 
