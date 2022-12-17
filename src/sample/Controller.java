@@ -30,12 +30,6 @@ public class Controller implements Initializable {
     private Label ScoreText;
 
     @FXML
-    private AnchorPane scene;
-
-    @FXML
-    private Label ScoreText;
-
-    @FXML
     private Label Lifes;
 
     @FXML
