@@ -26,6 +26,12 @@ public class Controller implements Initializable {
 
     @FXML
     private Label congrats;
+    
+    @FXML
+    private Label ScoreText;
+
+    @FXML
+    private AnchorPane scene;
 
     @FXML
     private Label ScoreText;
@@ -109,6 +115,7 @@ public class Controller implements Initializable {
         congrats.setText("");
         startGame();
         initscore = 0;
+
         initlifes = 3;
         ScoreText.setText(String.format("%d", initscore));
         Lifes.setText(String.format("%d", initlifes));
@@ -160,6 +167,7 @@ public class Controller implements Initializable {
         double height = 200;
 
         int spaceCheck = 1;
+
 
         for (double i = height; i > 0 ; i = i - 500) {
             for (double j = width; j > 0 ; j = j - 150) {
@@ -217,10 +225,12 @@ public class Controller implements Initializable {
             initscore = 0;
             ScoreText.setText("");
             Lifes.setText("");
+
             deltaX = -1;
             deltaY = -3;
             circle.setLayoutX(300);
             circle.setLayoutY(300);
+
             // System.out.println("Game over!");
         }
     }
