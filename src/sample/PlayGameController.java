@@ -179,8 +179,8 @@ public class PlayGameController implements Initializable {
 
         int spaceCheck = 1;
 
-        for (double i = height; i > 0 ; i = i - 500) {
-            for (double j = width; j > 0 ; j = j - 250) {
+        for (double i = height; i > 0 ; i = i - 50) {
+            for (double j = width; j > 0 ; j = j - 25) {
                 if(spaceCheck % 2 == 0){
                     Rectangle rectangle = new Rectangle(j,i,30,30);
                     rectangle.setFill(Color.ORANGE);
