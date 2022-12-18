@@ -40,8 +40,7 @@ public class PlayGameController implements Initializable {
 
     @FXML
     private Label SumScore;
-    @FXML
-    private Label lvlind;
+
     @FXML
     private Label ScoreText;
 
@@ -68,12 +67,6 @@ public class PlayGameController implements Initializable {
 
     @FXML
     private Button startButton;
-    
-    @FXML
-    private Button next;
-
-    @FXML
-    private Label tamat;
 
     @FXML
     private Label EnglishIndicatorLabel;
@@ -83,16 +76,15 @@ public class PlayGameController implements Initializable {
     private ImageView[] playerLifes;
 
     private String urlLife = "/resources/heart.png";
-    double width;
-    double height;
+
     double deltaX = 1;
     double deltaY = 3;
     int initscore = 0;
     int initlifes = 2;
-    int lvl = 1;
+
     //1 Frame evey 10 millis, which means 100 FPS
     Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), new EventHandler<ActionEvent>() {
-    	@Override
+        @Override
         public void handle(ActionEvent actionEvent){
             movePaddle();
             checkCollisionPaddle(paddle);
@@ -102,9 +94,15 @@ public class PlayGameController implements Initializable {
             if(!bricks.isEmpty()){
                 bricks.removeIf(brick -> checkCollisionBrick(brick));
             } else {
-                AfterPlayText.setText("Congratulations!");
                 timeline.stop();
-                next.setVisible(true);
+                AfterPlayText.setText("Congratulations!");
+                startButton.setVisible(true);
+                while (initlifes >= 0)
+                {
+                    removeLifeWin();
+                }
+                circle.setLayoutX(450);
+                circle.setLayoutY(45);
             }
             checkCollisionScene(scene);
             if(circle.getBoundsInParent().intersects(bottomZone.getBoundsInParent()))
@@ -119,9 +117,10 @@ public class PlayGameController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         timeline.setCycleCount(Animation.INDEFINITE);
-        next.setVisible(false);
-        amogusMoveRotate(cyan_amogus);
+        amogusMoveTranslation(red_amogus, 10000, 850); // red = 1000 ; cyan = 2000
         amogusMoveRotate(red_amogus);
+        amogusMoveTranslation(cyan_amogus, 10000, -850);
+        amogusMoveRotate(cyan_amogus);
     }
 
     @FXML
@@ -130,34 +129,14 @@ public class PlayGameController implements Initializable {
         StartButton2.setVisible(false);
         AreYouReady.setVisible(false);
         createGameElements(urlLife);
-        amogusMoveTranslation(red_amogus, 10000, 850); // red = 1000 ; cyan = 2000
-        amogusMoveRotate(red_amogus);
-        amogusMoveTranslation(cyan_amogus, 10000, -850);
-        amogusMoveRotate(cyan_amogus);
         startGame();
-        initscore = 0;
         initlifes = 2;
-        lvlind.setText(String.format("%d",lvl));
+        initscore = 0;
         ScoreText.setText(String.format("%d", initscore));
     }
 
-
-    @FXML
-    void nextLvl(ActionEvent event) {
-        height = height +50;
-        lvl = lvl+1;
-        deltaX=deltaX+3;
-        deltaY=deltaY+3;
-    	createBricks(height,width);
-    	timeline.play();
-        next.setVisible(false);
-        AfterPlayText.setVisible(false);
-    }
-
     public void startGame(){
-    	width = 860;
-    	height = 100;
-        createBricks(height,width);
+        createBricks();
         timeline.play();
     }
 
@@ -192,20 +171,19 @@ public class PlayGameController implements Initializable {
             scene.getChildren().remove(brick);
             initscore += 50;
             ScoreText.setText(String.format("%d", initscore));
-            lvlind.setText(String.format("%d", lvl));
-
             return true;
         }
-        lvlind.setText(String.format("%d", lvl));
         return false;
     }
 
-    public void createBricks(double tinggi, double lebar){
+    public void createBricks(){
+        double width = 860;
+        double height = 200;
 
         int spaceCheck = 1;
 
-        for (double i = tinggi; i > 0 ; i = i - 50) {
-            for (double j = lebar; j > 0 ; j = j - 25) {
+        for (double i = height; i > 0 ; i = i - 500) {
+            for (double j = width; j > 0 ; j = j - 250) {
                 if(spaceCheck % 2 == 0){
                     Rectangle rectangle = new Rectangle(j,i,30,30);
                     rectangle.setFill(Color.ORANGE);
@@ -259,8 +237,7 @@ public class PlayGameController implements Initializable {
             bricks.forEach(brick -> scene.getChildren().remove(brick));
             bricks.clear();
             StartButton2.setVisible(true);
-            
-            lvl = 1;
+
             initscore = 0;
             ScoreText.setText("");
             Lifes.setText("");
@@ -274,8 +251,7 @@ public class PlayGameController implements Initializable {
     
     @FXML
     void StartButton2Action(ActionEvent event) {
-        lvl = 1;
-    	initlifes = 2;
+        initlifes = 2;
         createGameElements(urlLife);
         startGame();
         StartButton2.setVisible(false);
@@ -307,10 +283,29 @@ public class PlayGameController implements Initializable {
             bricks.forEach(brick -> scene.getChildren().remove(brick));
             bricks.clear();
             StartButton2.setVisible(true);
-            lvl = 1;
+
             initscore = 0;
             ScoreText.setText("");
             Lifes.setText("");
+            deltaX = -1;
+            deltaY = -3;
+            circle.setLayoutX(300);
+            circle.setLayoutY(300);
+		}
+	}
+
+    private void removeLifeWin() {
+		scene.getChildren().remove(playerLifes[initlifes]);
+		initlifes -= 1;
+		if(initlifes < 0) {
+			timeline.stop();
+            AfterPlayText.setText("Congratulation!");
+            SumScore.setText(String.format("Your Score : %d", initscore));
+            bricks.forEach(brick -> scene.getChildren().remove(brick));
+            bricks.clear();
+            StartButton2.setVisible(true);
+
+            ScoreText.setText("");
             deltaX = -1;
             deltaY = -3;
             circle.setLayoutX(300);
