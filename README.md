@@ -14,7 +14,7 @@ Repository Untuk Final Project PBO A Kelompok 13
 
 **Brick Breaker** sebenarnya merupakan _game_ yang sangat sederhana. Terdapat 1 bola, 1 _paddle_, dan sejumlah blok, dimana pemain dapat menghancurkan seluruh blok dengan bola yang dapat memantul apabila terkena paddle tersebut. Pemain akan kalah apabila bola jatuh diluar _paddle_ yang ada. Dalam perkembangannya, banyak _developer_ yang memodifikasi dengan memberi _powerup_, memberi variasi pada posisi brik, serta menambah kecepatan dari bola. <br>
 
-Dalam penugasan _Final Project_ ini, kami memodifikasi **Brick Breaker** dari referensi berikut ( https://intip.in/ReferensiBrickBreaker ) menggunakan _Java_. Modifikasi yang kami lakukan meliputi penambahan fitur, _minor bug fixed_, dan UI _Improvement_.
+Dalam penugasan _Final Project_ ini, kami memodifikasi **Brick Breaker** dari referensi berikut (https://intip.in/ReferensiBrickBreaker) menggunakan _Java_. Modifikasi yang kami lakukan meliputi penambahan fitur, _minor bug fixed_, dan UI _Improvement_.
 
 ## **Changelog**
 - **Main Menu** <br> 
