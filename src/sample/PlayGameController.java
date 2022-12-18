@@ -97,6 +97,7 @@ public class PlayGameController implements Initializable {
                 AfterPlayText.setText("Congratulations!");
                 timeline.stop();
                 startButton.setVisible(true);
+                removeAllLife();
             }
             checkCollisionScene(scene);
             if(circle.getBoundsInParent().intersects(bottomZone.getBoundsInParent()))
@@ -125,9 +126,9 @@ public class PlayGameController implements Initializable {
         amogusMoveRotate(red_amogus);
         amogusMoveTranslation(cyan_amogus, 10000, -850);
         amogusMoveRotate(cyan_amogus);
+        initlifes = 2;
         startGame();
         initscore = 0;
-        initlifes = 2;
         ScoreText.setText(String.format("%d", initscore));
     }
 
@@ -178,8 +179,8 @@ public class PlayGameController implements Initializable {
 
         int spaceCheck = 1;
 
-        for (double i = height; i > 0 ; i = i - 50) {
-            for (double j = width; j > 0 ; j = j - 25) {
+        for (double i = height; i > 0 ; i = i - 500) {
+            for (double j = width; j > 0 ; j = j - 250) {
                 if(spaceCheck % 2 == 0){
                     Rectangle rectangle = new Rectangle(j,i,30,30);
                     rectangle.setFill(Color.ORANGE);
@@ -288,6 +289,13 @@ public class PlayGameController implements Initializable {
             circle.setLayoutX(300);
             circle.setLayoutY(300);
 		}
+	}
+
+    private void removeAllLife() {
+		for (int i = initlifes; initlifes >= 0; i--)
+        {
+            scene.getChildren().remove(playerLifes[i]);
+        }
 	}
 
     public void amogusMoveTranslation(ImageView amogus, double speed, double x) {
