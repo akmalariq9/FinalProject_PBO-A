@@ -68,25 +68,5 @@
             <Image url="@../resources/are-you-ready.png" />
          </image>
       </ImageView>
-      <Button fx:id="next" layoutX="324.0" layoutY="310.0" mnemonicParsing="false" onAction="#nextLvl" prefHeight="55.0" prefWidth="250.0" text="NEXT">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Button>
-      <Label layoutX="386.0" layoutY="552.0" text="Lvl" textFill="WHITE">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
-      <Label fx:id="lvlind" layoutX="445.0" layoutY="552.0" prefHeight="38.0" prefWidth="69.0" textFill="WHITE">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
-      <Label fx:id="tamat" alignment="CENTER" contentDisplay="CENTER" layoutX="371.0" layoutY="127.0" prefHeight="83.0" prefWidth="148.0" textFill="WHITE">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
     </children>
 </AnchorPane>
