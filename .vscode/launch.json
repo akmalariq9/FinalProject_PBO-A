@@ -6,10 +6,18 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "sample.Main",
+            "projectName": "FinalProject_PBO-A_e7ce1a5f",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}",
-            "vmArgs": "--module-path \"C:/Users/ASUS/Downloads/Compressed/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
@@ -17,7 +25,7 @@
             "request": "launch",
             "mainClass": "sample.Main",
             "projectName": "FinalProject_PBO-A_f0f717f",
-            "vmArgs": "--module-path \"C:/Users/ASUS/Downloads/Compressed/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }

@@ -5,44 +5,43 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CreditController">
     <children>
-      <ImageView fitHeight="635.0" fitWidth="927.0" layoutX="-21.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../bin/resources/deep_blue.jpg" />
+            <Image url="@../resources/deep_blue.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="MainMenu" layoutX="324.0" layoutY="496.0" mnemonicParsing="false" onAction="#MainMenuButtonAction" prefHeight="42.0" prefWidth="250.0" text="Main Menu">
+      <Button fx:id="MainMenu" layoutX="325.0" layoutY="470.0" mnemonicParsing="false" onAction="#MainMenuButtonAction" prefHeight="42.0" prefWidth="250.0" text="Main Menu">
          <font>
             <Font name="Minecraft" size="26.0" />
          </font>
       </Button>
-      <Text fill="#ffee00" layoutX="245.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brick Breaker!" textAlignment="CENTER" wrappingWidth="409.54998779296875">
-         <font>
-            <Font name="Minecraft" size="56.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="244.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credit Page" textAlignment="CENTER" wrappingWidth="409.54998779296875">
-         <font>
-            <Font name="Minecraft" size="56.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="245.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Akmal Ariq R." textAlignment="CENTER" wrappingWidth="409.54998779296875">
-         <font>
-            <Font name="Minecraft" size="28.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="186.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Syukra Wahyu R." textAlignment="CENTER" wrappingWidth="527.1500091552734">
-         <font>
-            <Font name="Minecraft" size="28.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="165.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dewangga Dika D." textAlignment="CENTER" wrappingWidth="569.5500030517578">
-         <font>
-            <Font name="Minecraft" size="28.0" />
-         </font>
-      </Text>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="350.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/logo-yellow.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="49.0" fitWidth="266.0" layoutX="317.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/credit-page.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="34.0" fitWidth="200.0" layoutX="350.0" layoutY="290.0">
+         <image>
+            <Image url="@../resources/akmal.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="56.0" fitWidth="240.0" layoutX="330.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/syukra.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="34.0" fitWidth="300.0" layoutX="315.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/dewangga.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
