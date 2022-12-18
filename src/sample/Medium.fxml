@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PlayGameController">
+<AnchorPane id="AnchorPane" fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MediumGameController">
     <children>
       <ImageView fitHeight="624.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -31,16 +31,16 @@
             <Font name="Minecraft" size="45.0" />
          </font>
       </Label>
-      <Button fx:id="StartButton2" layoutX="324.0" layoutY="310.0" mnemonicParsing="false" onAction="#StartButton2Action" prefHeight="42.0" prefWidth="250.0" text="TRY AGAIN">
+      <Button fx:id="StartButton2" layoutX="324.0" layoutY="269.0" mnemonicParsing="false" onAction="#StartButton2Action" prefHeight="42.0" prefWidth="250.0" text="PLAY AGAIIN">
          <font>
             <Font name="Minecraft" size="26.0" />
          </font>
       </Button>
         <Circle fx:id="circle" fill="DODGERBLUE" layoutX="450.0" layoutY="45.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
       <Rectangle fx:id="bottomZone" arcHeight="2.0" arcWidth="5.0" fill="TRANSPARENT" height="10.0" layoutY="542.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="900.0" />
-      <Label fx:id="ScoreText" alignment="CENTER_RIGHT" layoutX="660.0" layoutY="511.0" prefHeight="83.0" prefWidth="234.0" textAlignment="RIGHT" textFill="#fefefe">
+      <Label fx:id="ScoreText" alignment="CENTER_RIGHT" layoutX="639.0" layoutY="511.0" prefHeight="83.0" prefWidth="234.0" textAlignment="RIGHT" textFill="#fefefe">
          <font>
-            <Font size="56.0" />
+            <Font name="Minecraft" size="56.0" />
          </font>
       </Label>
       <Label fx:id="Lifes" layoutX="9.0" layoutY="511.0" prefHeight="41.0" prefWidth="148.0" textAlignment="RIGHT" textFill="#fefefe">
@@ -48,7 +48,7 @@
             <Font size="56.0" />
          </font>
       </Label>
-      <Button fx:id="startButton" layoutX="325.0" layoutY="310.0" mnemonicParsing="false" onAction="#startGameButtonAction" prefHeight="42.0" prefWidth="250.0" text="START">
+      <Button fx:id="startButton" layoutX="325.0" layoutY="269.0" mnemonicParsing="false" onAction="#startGameButtonAction" prefHeight="42.0" prefWidth="250.0" text="START">
          <font>
             <Font name="Minecraft" size="26.0" />
          </font>
@@ -63,10 +63,15 @@
             <Image url="@../resources/paddle.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="AreYouReady" fitHeight="39.0" fitWidth="296.0" layoutX="303.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="AreYouReady" fitHeight="39.0" fitWidth="296.0" layoutX="303.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/are-you-ready.png" />
          </image>
       </ImageView>
+      <Button fx:id="BackButton" layoutX="325.0" layoutY="349.0" mnemonicParsing="false" onAction="#BackButtonAction" prefHeight="42.0" prefWidth="250.0" text="BACK">
+         <font>
+            <Font name="Minecraft" size="26.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

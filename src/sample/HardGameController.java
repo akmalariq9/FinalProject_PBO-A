@@ -9,9 +9,12 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -21,13 +24,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
 
-public class PlayGameController implements Initializable {
+public class HardGameController implements Initializable {
 
     @FXML
     private Label AfterPlayText;
@@ -39,13 +44,16 @@ public class PlayGameController implements Initializable {
     private Button StartButton2;
 
     @FXML
-    private Label SumScore;
+    private Button BackButton;
+
+    @FXML
+    public Label SumScore;
 
     @FXML
     private Label ScoreText;
 
     @FXML
-    private Label Lifes;
+    public Label Lifes;
 
     @FXML
     private ImageView paddle;
@@ -68,17 +76,14 @@ public class PlayGameController implements Initializable {
     @FXML
     private Button startButton;
 
-    @FXML
-    private Label EnglishIndicatorLabel;
-
     Robot robot = new Robot();
     private ArrayList<Rectangle> bricks = new ArrayList<>();
     private ImageView[] playerLifes;
 
     private String urlLife = "/resources/heart.png";
 
-    double deltaX = 1;
-    double deltaY = 3;
+    double deltaX = 3;
+    double deltaY = 5;
     int initscore = 0;
     int initlifes = 2;
 
@@ -128,6 +133,9 @@ public class PlayGameController implements Initializable {
         startButton.setVisible(false);
         StartButton2.setVisible(false);
         AreYouReady.setVisible(false);
+        BackButton.setVisible(false);
+        AfterPlayText.setText("");
+        SumScore.setText("");
         createGameElements(urlLife);
         startGame();
         initlifes = 2;
@@ -178,12 +186,12 @@ public class PlayGameController implements Initializable {
 
     public void createBricks(){
         double width = 860;
-        double height = 200;
+        double height = 250;
 
         int spaceCheck = 1;
 
-        for (double i = height; i > 0 ; i = i - 500) {
-            for (double j = width; j > 0 ; j = j - 250) {
+        for (double i = height; i > 0 ; i = i - 50) {
+            for (double j = width; j > 0 ; j = j - 25) {
                 if(spaceCheck % 2 == 0){
                     Rectangle rectangle = new Rectangle(j,i,30,30);
                     rectangle.setFill(Color.ORANGE);
@@ -237,6 +245,7 @@ public class PlayGameController implements Initializable {
             bricks.forEach(brick -> scene.getChildren().remove(brick));
             bricks.clear();
             StartButton2.setVisible(true);
+            BackButton.setVisible(true);
 
             initscore = 0;
             ScoreText.setText("");
@@ -283,7 +292,8 @@ public class PlayGameController implements Initializable {
             bricks.forEach(brick -> scene.getChildren().remove(brick));
             bricks.clear();
             StartButton2.setVisible(true);
-
+            BackButton.setVisible(true);
+            
             initscore = 0;
             ScoreText.setText("");
             Lifes.setText("");
@@ -304,6 +314,7 @@ public class PlayGameController implements Initializable {
             bricks.forEach(brick -> scene.getChildren().remove(brick));
             bricks.clear();
             StartButton2.setVisible(true);
+            BackButton.setVisible(true);
 
             ScoreText.setText("");
             deltaX = -1;
@@ -334,5 +345,14 @@ public class PlayGameController implements Initializable {
         rotate.setByAngle(360);
         rotate.setAxis(Rotate.Z_AXIS);
         rotate.play();
+    }
+
+    @FXML
+    void BackButtonAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+        Stage window = (Stage)(((Node) event.getSource()).getScene().getWindow());
+        window.setTitle("Final Project_Brick Breaker!");
+        window.setScene(new Scene(root, 900, 600));
+        window.show();
     }
 }

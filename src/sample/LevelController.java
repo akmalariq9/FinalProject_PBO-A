@@ -12,20 +12,23 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class MainMenuController {
+public class LevelController {
 
     @FXML
-    private Button AboutButton;
+    private Button Easy;
 
     @FXML
-    private Button CreditButton;
+    private Button Hard;
+
+    @FXML
+    private Button Medium;
 
     @FXML
     private AnchorPane scene;
 
     @FXML
-    void PlayGame(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Level.fxml"));
+    void EasyButtonAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Easy.fxml"));
         Stage window = (Stage)(((Node) event.getSource()).getScene().getWindow());
         window.setTitle("Final Project_Brick Breaker!");
         window.setScene(new Scene(root, 900, 600));
@@ -33,8 +36,8 @@ public class MainMenuController {
     }
 
     @FXML
-    void AboutButtonAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("About.fxml"));
+    void MediumButtonAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Medium.fxml"));
         Stage window = (Stage)(((Node) event.getSource()).getScene().getWindow());
         window.setTitle("Final Project_Brick Breaker!");
         window.setScene(new Scene(root, 900, 600));
@@ -42,11 +45,13 @@ public class MainMenuController {
     }
 
     @FXML
-    void CreditButtonAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Credit.fxml"));
+    void hardButtonAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Hard.fxml"));
         Stage window = (Stage)(((Node) event.getSource()).getScene().getWindow());
         window.setTitle("Final Project_Brick Breaker!");
         window.setScene(new Scene(root, 900, 600));
         window.show();
+
     }
+
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AboutController">
+    <children>
+      <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/deep_blue.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="MainMenu" layoutX="325.0" layoutY="470.0" mnemonicParsing="false" onAction="#MainMenuButtonAction" prefHeight="42.0" prefWidth="250.0" text="BACK">
+         <font>
+            <Font name="Minecraft" size="26.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="350.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/logo-yellow.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="328.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About Page">
+         <font>
+            <Font name="Minecraft" size="44.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="106.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brick Breaker (platformer) is a Breakout clone which the player must smash a wall of bricks by deflecting a bouncing ball with a paddle. The paddle may move horizontally and is controlled with the BlackBerry's trackwheel, the computer's mouse or the touch of a finger (in the case of touchscreen). The player gets 3 lives to start with; a life is lost if the ball hits the bottom of the screen. When all the bricks have been destroyed, the player advances to a new, harder level." textAlignment="CENTER" wrappingWidth="687.7367172241211">
+         <font>
+            <Font name="Minecraft" size="16.0" />
+         </font>
+      </Text>
+    </children>
+</AnchorPane>
