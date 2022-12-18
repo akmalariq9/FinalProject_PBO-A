@@ -1,5 +1,5 @@
 ## **Final Project PBO A (13) - Brick Breaker**
-Repository Untuk Final Project PBO A Kelompok 13
+Repository Untuk Final Project PBO A Kelompok 13 - Referensi : https://intip.in/ReferensiBrickBreaker
 
 ## **Anggota Kelompok**
 
